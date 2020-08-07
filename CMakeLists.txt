@@ -37,6 +37,7 @@ endif()
 
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(fizzBuzz-ut fizzBuzzTests.cpp fizzBuzz.cpp)
+add_executable(fizzBuzz fizzBuzz.cpp main.cpp)
 target_link_libraries(fizzBuzz-ut gtest_main)
 enable_testing()
 add_test(NAME fizzBuzzUnitTest COMMAND fizzBuzz-ut)
