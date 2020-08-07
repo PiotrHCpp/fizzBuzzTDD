@@ -6,6 +6,9 @@ bool isMultiple(unsigned value, unsigned base) {
 }
 
 std::string fizzBuzz(unsigned value) {
+    if(isMultiple(value, 3) && isMultiple(value, 5)) {
+        return "FizzBuzz";
+    }
     if(isMultiple(value, 3)) {
         return "Fizz";
     }
@@ -41,4 +44,8 @@ TEST(FizzBuzzTests, returnsFizzWith6PassedIn) {
 
 TEST(FizzBuzzTests, returnsBuzzWith10PassedIn) {
     EXPECT_EQ("Buzz", fizzBuzz(10));
+}
+
+TEST(FizzBuzzTests, returnsFizzBuzzWith15PassedIn) {
+    EXPECT_EQ("FizzBuzz", fizzBuzz(15));
 }
