@@ -2,7 +2,7 @@
 #include <string>
 
 std::string fizzBuzz(unsigned value) {
-    if(3 == value) {
+    if(0 == (value % 3)) {
         return "Fizz";
     }
     if(5 == value) {
@@ -29,4 +29,8 @@ TEST(FizzBuzzTests, returnsFizzWith3PassedIn) {
 
 TEST(FizzBuzzTests, returnsBuzzWith5PassedIn) {
     EXPECT_EQ("Buzz", fizzBuzz(5));
+}
+
+TEST(FizzBuzzTests, returnsFizzWith6PassedIn) {
+    EXPECT_EQ("Fizz", fizzBuzz(6));
 }
