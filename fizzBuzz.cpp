@@ -1,9 +1,40 @@
 #include "gtest/gtest.h"
 #include <string>
 
+struct TestContainer {
+    TestContainer(unsigned value, std::string expected) :
+        value_(value), expected_(expected)
+    {}
+
+    unsigned value_;
+    std::string expected_;
+};
+
+struct FizzBuzzTests : public ::testing::TestWithParam<TestContainer> {
+};
+
+INSTANTIATE_TEST_CASE_P(ParamTest,
+                        FizzBuzzTests,
+                        ::testing::Values(
+                            TestContainer{0, "0"},
+                            TestContainer{1, "1"},
+                            TestContainer{2, "2"},
+                            TestContainer{3, "Fizz"},
+                            TestContainer{5, "Buzz"},
+                            TestContainer{6, "Fizz"},
+                            TestContainer{10, "Buzz"},
+                            TestContainer{12, "Fizz"},
+                            TestContainer{15, "FizzBuzz"},
+                            TestContainer{30, "FizzBuzz"}
+                        )
+);
+
 std::string fizzBuzz(unsigned value) {
     const bool valueIsMultipleOf3 = (0 == (value % 3));
     const bool valueIsMultipleOf5 = (0 == (value % 5));
+    if(0 == value) {
+        return "0";
+    }
     if(valueIsMultipleOf3 && valueIsMultipleOf5) {
         return "FizzBuzz";
     }
@@ -20,30 +51,8 @@ TEST(FizzBuzzTests, canCallFizzBuzz) {
     std::string result = fizzBuzz(1);
 }
 
-TEST(FizzBuzzTests, returns1With1PassedIn) {
-    EXPECT_EQ("1", fizzBuzz(1));
-}
-
-TEST(FizzBuzzTests, returns2With2PassedIn) {
-    EXPECT_EQ("2", fizzBuzz(2));
-}
-
-TEST(FizzBuzzTests, returnsFizzWith3PassedIn) {
-    EXPECT_EQ("Fizz", fizzBuzz(3));
-}
-
-TEST(FizzBuzzTests, returnsBuzzWith5PassedIn) {
-    EXPECT_EQ("Buzz", fizzBuzz(5));
-}
-
-TEST(FizzBuzzTests, returnsFizzWith6PassedIn) {
-    EXPECT_EQ("Fizz", fizzBuzz(6));
-}
-
-TEST(FizzBuzzTests, returnsBuzzWith10PassedIn) {
-    EXPECT_EQ("Buzz", fizzBuzz(10));
-}
-
-TEST(FizzBuzzTests, returnsFizzBuzzWith15PassedIn) {
-    EXPECT_EQ("FizzBuzz", fizzBuzz(15));
+TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
+    unsigned value = GetParam().value_;
+    std::string expected = GetParam().expected_;
+    EXPECT_EQ(expected, fizzBuzz(value));
 }
