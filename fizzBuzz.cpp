@@ -2,12 +2,12 @@
 #include <string>
 
 struct TestContainer {
-    TestContainer(unsigned value, std::string expected) :
-        value_(value), expected_(expected)
+    TestContainer(unsigned argument, std::string expected) :
+        argument(argument), expected(expected)
     {}
 
-    unsigned value_;
-    std::string expected_;
+    unsigned argument;
+    std::string expected;
 };
 
 struct FizzBuzzTests : public ::testing::TestWithParam<TestContainer> {
@@ -52,7 +52,7 @@ TEST(FizzBuzzTests, canCallFizzBuzz) {
 }
 
 TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
-    unsigned value = GetParam().value_;
-    std::string expected = GetParam().expected_;
-    EXPECT_EQ(expected, fizzBuzz(value));
+    unsigned argument = GetParam().argument;
+    std::string expected = GetParam().expected;
+    EXPECT_EQ(expected, fizzBuzz(argument));
 }
