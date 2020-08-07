@@ -36,7 +36,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Now simply link against gtest or gtest_main as needed. Eg
+add_executable(fizzBuzz-ut fizzBuzzTests.cpp fizzBuzz.cpp)
+target_link_libraries(fizzBuzz-ut gtest_main)
 enable_testing()
-add_executable(fizzBuzz fizzBuzz.cpp)
-target_link_libraries(fizzBuzz gtest_main)
-add_test(NAME gTest COMMAND fizzBuzz)
+add_test(NAME fizzBuzzUnitTest COMMAND fizzBuzz-ut)
