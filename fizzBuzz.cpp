@@ -1,11 +1,15 @@
 #include "gtest/gtest.h"
 #include <string>
 
+bool isMultiple(unsigned value, unsigned base) {
+    return (0 == (value % base));
+}
+
 std::string fizzBuzz(unsigned value) {
-    if(0 == (value % 3)) {
+    if(isMultiple(value, 3)) {
         return "Fizz";
     }
-    if(0 == (value % 5)) {
+    if(isMultiple(value, 5)) {
         return "Buzz";
     }
     return std::to_string(value);
