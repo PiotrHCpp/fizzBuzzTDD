@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 #include <string>
 
-struct TestContainer {
-    TestContainer(unsigned argument, std::string expected) :
+struct TestingValues {
+    TestingValues(unsigned argument, std::string expected) :
         argument(argument), expected(expected)
     {}
 
@@ -10,23 +10,23 @@ struct TestContainer {
     std::string expected;
 };
 
-struct FizzBuzzTests : public ::testing::TestWithParam<TestContainer> {
+struct FizzBuzzTests : public ::testing::TestWithParam<TestingValues> {
 };
 
 INSTANTIATE_TEST_CASE_P(ParamTest,
                         FizzBuzzTests,
                         ::testing::Values(
-                            TestContainer{0, "0"},
-                            TestContainer{1, "1"},
-                            TestContainer{2, "2"},
-                            TestContainer{3, "Fizz"},
-                            TestContainer{5, "Buzz"},
-                            TestContainer{6, "Fizz"},
-                            TestContainer{10, "Buzz"},
-                            TestContainer{12, "Fizz"},
-                            TestContainer{15, "FizzBuzz"},
-                            TestContainer{30, "FizzBuzz"},
-                            TestContainer{100, "Buzz"}
+                            TestingValues{0, "0"},
+                            TestingValues{1, "1"},
+                            TestingValues{2, "2"},
+                            TestingValues{3, "Fizz"},
+                            TestingValues{5, "Buzz"},
+                            TestingValues{6, "Fizz"},
+                            TestingValues{10, "Buzz"},
+                            TestingValues{12, "Fizz"},
+                            TestingValues{15, "FizzBuzz"},
+                            TestingValues{30, "FizzBuzz"},
+                            TestingValues{100, "Buzz"}
                         )
 );
 
