@@ -30,15 +30,15 @@ INSTANTIATE_TEST_CASE_P(ParamTest,
                         )
 );
 
-std::string fizzBuzz(unsigned value) {
-    if(100 < value) {
+std::string fizzBuzz(unsigned argument) {
+    if(100 < argument) {
         throw std::out_of_range("argument is out of range (>100)");
     }
-    if(0 == value) {
+    if(0 == argument) {
         return "0";
     }
-    const bool valueIsMultipleOf3 = (0 == (value % 3));
-    const bool valueIsMultipleOf5 = (0 == (value % 5));
+    const bool valueIsMultipleOf3 = (0 == (argument % 3));
+    const bool valueIsMultipleOf5 = (0 == (argument % 5));
     if(valueIsMultipleOf3 && valueIsMultipleOf5) {
         return "FizzBuzz";
     }
@@ -48,7 +48,7 @@ std::string fizzBuzz(unsigned value) {
     if(valueIsMultipleOf5) {
         return "Buzz";
     }
-    return std::to_string(value);
+    return std::to_string(argument);
 }
 
 TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
