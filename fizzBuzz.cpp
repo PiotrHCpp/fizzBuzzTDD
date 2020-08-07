@@ -51,12 +51,6 @@ std::string fizzBuzz(unsigned value) {
     return std::to_string(value);
 }
 
-TEST(FizzBuzzTests, canCallFizzBuzz) {
-    unsigned argument = 1;
-    ASSERT_NO_THROW(fizzBuzz(argument));
-    std::string result = fizzBuzz(argument);
-}
-
 TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
     unsigned argument = GetParam().argument;
     std::string expected = GetParam().expected;
