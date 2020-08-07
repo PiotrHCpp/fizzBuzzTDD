@@ -54,12 +54,10 @@ std::string fizzBuzz(unsigned value) {
 TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
     unsigned argument = GetParam().argument;
     std::string expected = GetParam().expected;
-    ASSERT_NO_THROW(fizzBuzz(argument));
     EXPECT_EQ(expected, fizzBuzz(argument));
 }
 
 TEST(FizzBuzzTests, throwExceptionIfArgumentGreaterThan100) {
     const unsigned argument = 101;
-    ASSERT_ANY_THROW(fizzBuzz(argument));
     ASSERT_THROW(fizzBuzz(argument), std::out_of_range);
 }
