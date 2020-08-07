@@ -6,13 +6,15 @@ bool isMultiple(unsigned value, unsigned base) {
 }
 
 std::string fizzBuzz(unsigned value) {
-    if(isMultiple(value, 3) && isMultiple(value, 5)) {
+    bool valueIsMultipleOf3 = isMultiple(value, 3);
+    bool valueIsMultipleOf5 = isMultiple(value, 5);
+    if(valueIsMultipleOf3 && valueIsMultipleOf5) {
         return "FizzBuzz";
     }
-    if(isMultiple(value, 3)) {
+    if(valueIsMultipleOf3) {
         return "Fizz";
     }
-    if(isMultiple(value, 5)) {
+    if(valueIsMultipleOf5) {
         return "Buzz";
     }
     return std::to_string(value);
