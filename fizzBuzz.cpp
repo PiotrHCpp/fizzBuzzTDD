@@ -1,13 +1,9 @@
 #include "gtest/gtest.h"
 #include <string>
 
-bool isMultiple(unsigned value, unsigned base) {
-    return (0 == (value % base));
-}
-
 std::string fizzBuzz(unsigned value) {
-    bool valueIsMultipleOf3 = isMultiple(value, 3);
-    bool valueIsMultipleOf5 = isMultiple(value, 5);
+    const bool valueIsMultipleOf3 = (0 == (value % 3));
+    const bool valueIsMultipleOf5 = (0 == (value % 5));
     if(valueIsMultipleOf3 && valueIsMultipleOf5) {
         return "FizzBuzz";
     }
