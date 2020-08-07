@@ -2,7 +2,7 @@
 #include <string>
 
 std::string fizzBuzz(unsigned value) {
-    return "1";
+    return std::to_string(value);
 }
 
 TEST(FizzBuzzTests, canCallFizzBuzz) {
@@ -11,4 +11,8 @@ TEST(FizzBuzzTests, canCallFizzBuzz) {
 
 TEST(FizzBuzzTests, returns1With1PassedIn) {
     EXPECT_EQ("1", fizzBuzz(1));
+}
+
+TEST(FizzBuzzTests, returns2With2PassedIn) {
+    EXPECT_EQ("2", fizzBuzz(2));
 }
