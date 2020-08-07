@@ -5,6 +5,9 @@ std::string fizzBuzz(unsigned value) {
     if(3 == value) {
         return "Fizz";
     }
+    if(5 == value) {
+        return "Buzz";
+    }
     return std::to_string(value);
 }
 
@@ -22,4 +25,8 @@ TEST(FizzBuzzTests, returns2With2PassedIn) {
 
 TEST(FizzBuzzTests, returnsFizzWith3PassedIn) {
     EXPECT_EQ("Fizz", fizzBuzz(3));
+}
+
+TEST(FizzBuzzTests, returnsBuzzWith5PassedIn) {
+    EXPECT_EQ("Buzz", fizzBuzz(5));
 }
