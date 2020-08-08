@@ -35,6 +35,8 @@ TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
 }
 
 TEST(FizzBuzzTests, throwExceptionIfArgumentGreaterThan100) {
-    const unsigned argument = 101;
-    ASSERT_THROW(fizzBuzz(argument), std::out_of_range);
+    const unsigned argument1 = 101;
+    const unsigned argument2 = 999999;
+    EXPECT_THROW(fizzBuzz(argument1), std::out_of_range);
+    EXPECT_THROW(fizzBuzz(argument2), std::out_of_range);
 }
