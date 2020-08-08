@@ -31,9 +31,7 @@ INSTANTIATE_TEST_CASE_P(ParamTest,
 );
 
 TEST_P(FizzBuzzTests, checkExpectedValuesForFizzBuzz) {
-    unsigned argument = GetParam().argument;
-    std::string expected = GetParam().expected;
-    EXPECT_EQ(expected, fizzBuzz(argument));
+    EXPECT_EQ(GetParam().expected, fizzBuzz(GetParam().argument));
 }
 
 TEST(FizzBuzzTests, throwExceptionIfArgumentGreaterThan100) {
